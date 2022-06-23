@@ -1,6 +1,8 @@
 class Diary
+  attr_accessor :list
   def initialize
     @diary = []
+    #@list_of_contacts = []
   end
     
   def add_entry(experience)
@@ -11,12 +13,16 @@ class Diary
     return @diary
   end
 
-  def add_todo_list_in_diary
-    @diary << $list_of_todos
+  def add_todo_list_to_diary(list)
+    @diary << list.view_list
+  end
+
+  def add_contact(contact)
+    @list_of_contacts << contact
   end
 
   def view_diary_with_contacts
-    @diary << $list_of_contacts
+    @diary << @list_of_contacts
   end
 
   def count_words
@@ -44,24 +50,3 @@ class Diary
     return best_entry
   end
 end
-
-class TodoAndContact
-  def initialize
-    $list_of_todos = []
-    $list_of_contacts =[]
-  end
-    
-  def add_todo(task)
-    $list_of_todos << task
-  end
-      
-  def view_todo_list
-    return $list_of_todos
-  end
-      
-  def add_contact(number)
-    $list_of_contacts << number
-  end
-end
-
-
